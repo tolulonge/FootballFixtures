@@ -42,7 +42,7 @@ class FixturesFragment : Fragment() {
         fixturesAdapter.setOnItemClickListener {
             Toast.makeText(requireContext(), it.homeTeam, Toast.LENGTH_SHORT).show()
             findNavController().navigate(
-               R.id.navigation_competitions
+               R.id.match_detail_fragment
             )
         }
     }
