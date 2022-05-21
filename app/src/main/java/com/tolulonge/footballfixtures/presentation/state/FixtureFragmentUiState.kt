@@ -14,3 +14,10 @@ data class PresentationTodayFixture(
     val competitionName: String?,
     val refereeName: String?
 )
+
+sealed class FixtureFragmentUiState {
+    object Empty : FixtureFragmentUiState()
+    data class Loading(val isLoading: Boolean) : FixtureFragmentUiState()
+    data class Loaded(val data: List<PresentationTodayFixture>, val message: String) : FixtureFragmentUiState()
+    data class Error(val message: String) : FixtureFragmentUiState()
+}

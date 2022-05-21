@@ -35,7 +35,7 @@ abstract class BaseRemoteRepository {
                     }
                     is SocketTimeoutException -> Resource.Error("An error has occurred, try again later.")
                     is IOException -> Resource.Error("Check your internet connection and try again.")
-                    else -> Resource.Error("Oops, something wrong happened.")
+                    else -> Resource.Error(e.localizedMessage?: "An error has occurred, try again later.")
                 }
             }
         }

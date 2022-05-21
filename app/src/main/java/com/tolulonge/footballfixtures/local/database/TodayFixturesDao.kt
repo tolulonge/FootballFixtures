@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 interface TodayFixturesDao {
 
     @Query("SELECT * FROM fixtures")
-    fun getTodayFixtures(): List<LocalTodayFixture>
+    suspend fun getTodayFixtures(): List<LocalTodayFixture>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTodayFixtures(allFixtures: List<LocalTodayFixture>)

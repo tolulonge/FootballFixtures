@@ -12,15 +12,15 @@ class RemoteTodayFixtureToDataTodayFixtureMapper: ListMapper<Match,DataTodayFixt
                 id = it.id,
                 date = it.utcDate,
                 status = it.status,
-                homeTeamName = it.homeTeam.name,
-                awayTeamName = it.awayTeam.name,
-                homeTeamScore = it.score.fullTime.home,
-                awayTeamScore = it.score.fullTime.away,
-                homeTeamLogo = it.homeTeam.crest,
-                awayTeamLogo = it.awayTeam.crest,
-                competitionName = it.competition.name,
-                countryOfFixture = it.area.name,
-                refereeName = it.referees.firstOrNull()?.name
+                homeTeamName = it.homeTeam?.name,
+                awayTeamName = it.awayTeam?.name,
+                homeTeamScore = it.score?.fullTime?.home,
+                awayTeamScore = it.score?.fullTime?.away,
+                homeTeamLogo = it.homeTeam?.crest,
+                awayTeamLogo = it.awayTeam?.crest,
+                competitionName = it.competition?.name,
+                countryOfFixture = it.area?.name,
+                refereeName = it.referees?.firstOrNull()?.name
             )
         }
     }

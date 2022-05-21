@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface LocalDataSource {
 
-    fun getTodayFixturesDb(): List<DataTodayFixture>
+    suspend fun getTodayFixturesDb(): List<DataTodayFixture>
     suspend fun insertTodayFixtures(allFixture: List<DataTodayFixture>)
 
 }

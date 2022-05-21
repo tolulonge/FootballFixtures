@@ -1,5 +1,6 @@
 package com.tolulonge.footballfixtures.data.repository
 
+import android.util.Log
 import com.tolulonge.footballfixtures.core.util.ApiStatus
 import com.tolulonge.footballfixtures.core.util.Resource
 import com.tolulonge.footballfixtures.data.model.DataTodayFixture
@@ -23,17 +24,18 @@ class FootballFixturesRepositoryImpl(
         return flow {
             emit(Resource.Loading(true))
             val localTodayFixture = localDataSource.getTodayFixturesDb()
-            emit(Resource.Success(
-                data =   dataTodayFixtureToDomainTodayFixtureMapper.map(localTodayFixture)
-            ))
 
             val isDbEmpty = localTodayFixture.isEmpty()
             val shouldJustLoadFromCache = !isDbEmpty && !fetchFromRemote
             if(shouldJustLoadFromCache) {
                 emit(Resource.Loading(false))
+                emit(Resource.Success(
+                    data =   dataTodayFixtureToDomainTodayFixtureMapper.map(localTodayFixture),
+                    message = ""
+                ))
                 return@flow
             }
-
+            emit(Resource.Loading(true))
             val response = remoteDataSource.getTodayFixtures()
             val dataTodayFixtures  =  when(response.status) {
                 ApiStatus.SUCCESS -> {
@@ -45,7 +47,8 @@ class FootballFixturesRepositoryImpl(
                     } ?: emit(Resource.Error("An unknown error occurred"))
                     null
                 }
-                else -> {
+                ApiStatus.LOADING -> {
+
                     null
                 }
             }
@@ -54,10 +57,11 @@ class FootballFixturesRepositoryImpl(
 
             dataTodayFixtures?.let { fixtures ->
                 localDataSource.insertTodayFixtures(fixtures)
-                emit(Resource.Success(
-                    data = dataTodayFixtureToDomainTodayFixtureMapper.map(localDataSource.getTodayFixturesDb())
-                ))
                 emit(Resource.Loading(false))
+                emit(Resource.Success(
+                    data = dataTodayFixtureToDomainTodayFixtureMapper.map(localDataSource.getTodayFixturesDb()),
+                    message = "Fixtures Successfully Refreshed"
+                ))
             }
         }
     }

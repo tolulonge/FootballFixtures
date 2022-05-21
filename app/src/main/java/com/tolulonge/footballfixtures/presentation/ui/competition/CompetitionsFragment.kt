@@ -10,8 +10,9 @@ import com.tolulonge.footballfixtures.R
 import com.tolulonge.footballfixtures.databinding.FragmentCompetitionsBinding
 import com.tolulonge.footballfixtures.presentation.adapters.Competition
 import com.tolulonge.footballfixtures.presentation.adapters.CompetitionsAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class CompetitionsFragment : Fragment() {
 
     private var _binding: FragmentCompetitionsBinding? = null

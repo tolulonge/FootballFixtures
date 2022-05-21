@@ -8,9 +8,10 @@ enum class ApiStatus {
 }
 
 sealed class Resource<T>(val status: ApiStatus, val data: T? = null, val message: String? = null) {
-    class Success<T>(data: T?): Resource<T>(
+    class Success<T>(data: T?,message: String? = null): Resource<T>(
         status = ApiStatus.SUCCESS,
-        data = data
+        data = data,
+        message = message
     )
     class Error<T>(message: String, data: T? = null): Resource<T>(
         status = ApiStatus.ERROR,
@@ -18,5 +19,6 @@ sealed class Resource<T>(val status: ApiStatus, val data: T? = null, val message
     )
     class Loading<T>(val isLoading: Boolean = true): Resource<T>(
         status = ApiStatus.LOADING,
+        data = null
     )
 }

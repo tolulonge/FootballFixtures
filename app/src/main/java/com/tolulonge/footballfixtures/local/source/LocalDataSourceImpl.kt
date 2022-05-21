@@ -10,7 +10,7 @@ class LocalDataSourceImpl(
     private val localDataTodayFixtureListMapper: LocalDataTodayFixtureListMapper,
     private val fixturesDao: TodayFixturesDao
 ) : LocalDataSource {
-    override fun getTodayFixturesDb(): List<DataTodayFixture> =
+    override suspend fun getTodayFixturesDb(): List<DataTodayFixture> =
         localDataTodayFixtureListMapper.to(fixturesDao.getTodayFixtures())
 
     override suspend fun insertTodayFixtures(allFixture: List<DataTodayFixture>) {
