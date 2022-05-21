@@ -3,6 +3,7 @@ package com.tolulonge.footballfixtures.ui.competition.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -47,8 +48,12 @@ class CompetitionsAdapter : RecyclerView.Adapter<CompetitionsAdapter.Competition
     }
 
     override fun onBindViewHolder(holder: CompetitionsViewHolder, position: Int) {
+        val animation = AnimationUtils.loadAnimation(holder.itemView.context, android.R.anim.slide_in_left)
         val fixture = differ.currentList[position]
-        holder.bind(fixture)
+        holder.apply {
+            itemView.startAnimation(animation)
+            bind(fixture)
+        }
     }
 
     private var onItemClickListener: ((Competition) -> Unit)? = null
