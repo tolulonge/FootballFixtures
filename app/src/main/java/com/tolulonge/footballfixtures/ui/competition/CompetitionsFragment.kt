@@ -38,9 +38,9 @@ class CompetitionsFragment : Fragment() {
         setUpRecyclerView()
         competitionsAdapter.differ.submitList(competitions)
         competitionsAdapter.setOnItemClickListener {
-            Toast.makeText(requireContext(), it.competitionName, Toast.LENGTH_SHORT).show()
+
             findNavController().navigate(
-                R.id.navigation_competitions
+                R.id.competition_fixtures_fragment
             )
         }
 

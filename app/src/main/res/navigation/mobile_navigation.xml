@@ -21,5 +21,10 @@
         android:name="com.tolulonge.footballfixtures.ui.fixtures.MatchDetailFragment"
         android:label="fragment_match_detail"
         tools:layout="@layout/fragment_match_detail" />
+    <fragment
+        android:id="@+id/competition_fixtures_fragment"
+        android:name="com.tolulonge.footballfixtures.ui.competition.competitionfixtures.CompetitionFixturesFragment"
+        android:label="fragment_competition_fixtures"
+        tools:layout="@layout/fragment_competition_fixtures" />
 
 </navigation>
