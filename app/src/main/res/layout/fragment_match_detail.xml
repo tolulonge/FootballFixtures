@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fixtures.MatchDetailFragment"
+    tools:context=".presentation.ui.fixtures.MatchDetailFragment"
     app:layoutDescription="@xml/fragment_match_detail_scene">
 
 

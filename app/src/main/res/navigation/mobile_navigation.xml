@@ -7,23 +7,23 @@
 
     <fragment
         android:id="@+id/navigation_fixtures"
-        android:name="com.tolulonge.footballfixtures.ui.fixtures.FixturesFragment"
+        android:name="com.tolulonge.footballfixtures.presentation.ui.fixtures.FixturesFragment"
         android:label="@string/title_fixtures"
         tools:layout="@layout/fragment_fixtures" />
 
     <fragment
         android:id="@+id/navigation_competitions"
-        android:name="com.tolulonge.footballfixtures.ui.competition.CompetitionsFragment"
+        android:name="com.tolulonge.footballfixtures.presentation.ui.competition.CompetitionsFragment"
         android:label="@string/title_competitions"
         tools:layout="@layout/fragment_competitions" />
     <fragment
         android:id="@+id/match_detail_fragment"
-        android:name="com.tolulonge.footballfixtures.ui.fixtures.MatchDetailFragment"
+        android:name="com.tolulonge.footballfixtures.presentation.ui.fixtures.MatchDetailFragment"
         android:label="fragment_match_detail"
         tools:layout="@layout/fragment_match_detail" />
     <fragment
         android:id="@+id/competition_fixtures_fragment"
-        android:name="com.tolulonge.footballfixtures.ui.competition.competitionfixtures.CompetitionFixturesFragment"
+        android:name="com.tolulonge.footballfixtures.presentation.ui.competition.competitionfixtures.CompetitionFixturesFragment"
         android:label="fragment_competition_fixtures"
         tools:layout="@layout/fragment_competition_fixtures" />
 

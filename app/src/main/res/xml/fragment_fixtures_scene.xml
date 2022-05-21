@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ConstraintSet android:id="@+id/start">
-        <Constraint android:id="@+id/recyclerView"
+        <Constraint android:id="@id/recyclerView"
             app:layout_constraintTop_toBottomOf="parent"
             android:layout_width="0dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -22,6 +22,8 @@
             app:layout_constraintStart_toStartOf="parent"
 
             />
+
+
     </ConstraintSet>
 
     <Transition

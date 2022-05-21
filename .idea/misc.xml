@@ -10,7 +10,7 @@
         <entry key="app/src/main/res/layout/fragment_fixtures.xml" value="0.3729166666666667" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3729166666666667" />
         <entry key="app/src/main/res/layout/fragment_match_day_fixture.xml" value="0.19166666666666668" />
-        <entry key="app/src/main/res/layout/fragment_match_detail.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/fragment_match_detail.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.3729166666666667" />
         <entry key="app/src/main/res/layout/item_competition.xml" value="0.3729166666666667" />
         <entry key="app/src/main/res/layout/item_fixture.xml" value="0.375" />
