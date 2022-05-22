@@ -45,8 +45,13 @@ class FixturesAdapter : RecyclerView.Adapter<FixturesAdapter.FixturesViewHolder>
                     }
 
                     else -> {
-                        binding.txtFullTimeIndicator.text = "N/A"
-                     //   binding.imgLiveIndicator.invisible()
+                        binding.apply {
+                            txtFullTimeIndicator.invisible()
+                            imgLiveIndicator.invisible()
+                            imgNavigateToMatchDetails.hide()
+                            imgHomeTeamLogo.invisible()
+                            imgAwayTeamLogo.invisible()
+                        }
                     }
                 }
             }

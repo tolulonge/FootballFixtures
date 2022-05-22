@@ -2,5 +2,6 @@ package com.tolulonge.footballfixtures.domain.mapper
 
 class AllDomainMappers(
     val dataCompetitionXToDomainCompetitionXMapper: DataCompetitionXToDomainCompetitionXMapper,
-    val dataTodayFixtureToDomainTodayFixtureMapper: DataTodayFixtureToDomainTodayFixtureMapper
+    val dataTodayFixtureToDomainTodayFixtureMapper: DataTodayFixtureToDomainTodayFixtureMapper,
+    val dataCompetitionFixtureToDomainCompetitionFixtureMapper: DataCompetitionFixtureToDomainCompetitionFixtureMapper
 )

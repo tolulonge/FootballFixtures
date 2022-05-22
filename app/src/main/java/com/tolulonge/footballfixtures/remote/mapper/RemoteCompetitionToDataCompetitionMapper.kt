@@ -16,7 +16,10 @@ class RemoteCompetitionToDataCompetitionMapper: ListMapper<CompetitionX,DataComp
                 competitionName = it.name,
                 currentMatchDay = it.currentSeason?.currentMatchday,
                 nextMatchDay = it.currentSeason?.currentMatchday?.plus(1),
-                competitionEmblem = it.emblem
+                competitionEmblem = it.emblem,
+                competitionCountryEmblem = it.area.flag,
+                competitionCode = it.code,
+                competitionCountryName = it.area.name
             )
         }
     }

@@ -17,6 +17,9 @@ class DomainCompetitionXToPresentationCompetitionXMapper : ListMapper<DomainComp
                    competitionName = it.competitionName,
                    currentMatchDay = it.currentMatchDay,
                     nextMatchDay = it.nextMatchDay,
+                    competitionCode = it.competitionCode,
+                    competitionCountryEmblem = it.competitionCountryEmblem,
+                    competitionCountryName = it.competitionCountryName
                 )
             }
         }

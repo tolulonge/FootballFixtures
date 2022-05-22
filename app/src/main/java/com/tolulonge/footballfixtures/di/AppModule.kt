@@ -10,19 +10,23 @@ import com.tolulonge.footballfixtures.data.repository.FootballFixturesRepository
 import com.tolulonge.footballfixtures.data.repository.LocalDataSource
 import com.tolulonge.footballfixtures.data.repository.RemoteDataSource
 import com.tolulonge.footballfixtures.domain.mapper.AllDomainMappers
+import com.tolulonge.footballfixtures.domain.mapper.DataCompetitionFixtureToDomainCompetitionFixtureMapper
 import com.tolulonge.footballfixtures.domain.mapper.DataCompetitionXToDomainCompetitionXMapper
 import com.tolulonge.footballfixtures.domain.mapper.DataTodayFixtureToDomainTodayFixtureMapper
 import com.tolulonge.footballfixtures.domain.repository.FootballFixturesRepository
 import com.tolulonge.footballfixtures.local.database.FootballFixturesDatabase
 import com.tolulonge.footballfixtures.local.mapper.AllLocalMappers
+import com.tolulonge.footballfixtures.local.mapper.LocalDataCompetitionFixtureListMapper
 import com.tolulonge.footballfixtures.local.mapper.LocalDataCompetitionXListMapper
 import com.tolulonge.footballfixtures.local.mapper.LocalDataTodayFixtureListMapper
 import com.tolulonge.footballfixtures.local.source.LocalDataSourceImpl
 import com.tolulonge.footballfixtures.presentation.mapper.AllPresentationMappers
+import com.tolulonge.footballfixtures.presentation.mapper.DomainCompetitionFixtureToPresentationCompetitionFixtureMapper
 import com.tolulonge.footballfixtures.presentation.mapper.DomainCompetitionXToPresentationCompetitionXMapper
 import com.tolulonge.footballfixtures.presentation.mapper.DomainTodayFixtureToPresentationTodayFixtureMapper
 import com.tolulonge.footballfixtures.remote.api.FootballFixturesApi
 import com.tolulonge.footballfixtures.remote.mapper.AllRemoteMappers
+import com.tolulonge.footballfixtures.remote.mapper.RemoteCompetitionFixturesToDataCompetitionFixturesMapper
 import com.tolulonge.footballfixtures.remote.mapper.RemoteCompetitionToDataCompetitionMapper
 import com.tolulonge.footballfixtures.remote.mapper.RemoteTodayFixtureToDataTodayFixtureMapper
 import com.tolulonge.footballfixtures.remote.source.RemoteDataSourceImpl
@@ -94,7 +98,8 @@ object AppModule {
             remoteDataSource = remoteDataSource,
             allDomainMappers = AllDomainMappers(
                 dataTodayFixtureToDomainTodayFixtureMapper = DataTodayFixtureToDomainTodayFixtureMapper(),
-                dataCompetitionXToDomainCompetitionXMapper = DataCompetitionXToDomainCompetitionXMapper()
+                dataCompetitionXToDomainCompetitionXMapper = DataCompetitionXToDomainCompetitionXMapper(),
+                dataCompetitionFixtureToDomainCompetitionFixtureMapper = DataCompetitionFixtureToDomainCompetitionFixtureMapper()
             )
         )
     }
@@ -108,10 +113,12 @@ object AppModule {
         return LocalDataSourceImpl(
             allLocalMappers = AllLocalMappers(
                 localDataTodayFixtureListMapper = LocalDataTodayFixtureListMapper(),
-                localDataCompetitionXListMapper = LocalDataCompetitionXListMapper()
+                localDataCompetitionXListMapper = LocalDataCompetitionXListMapper(),
+                localDataCompetitionFixtureListMapper = LocalDataCompetitionFixtureListMapper()
             ),
             fixturesDao = db.todayFixturesDao,
-            competitionsDao = db.competitionsDao
+            competitionsDao = db.competitionsDao,
+            competitionFixturesDao = db.competitionFixturesDao
         )
     }
 
@@ -124,7 +131,8 @@ object AppModule {
             footballFixturesApi = fixturesApi,
             allRemoteMappers = AllRemoteMappers(
                 remoteTodayFixtureToDataTodayFixtureMapper = RemoteTodayFixtureToDataTodayFixtureMapper(),
-                remoteCompetitionToDataCompetitionMapper = RemoteCompetitionToDataCompetitionMapper()
+                remoteCompetitionToDataCompetitionMapper = RemoteCompetitionToDataCompetitionMapper(),
+                remoteCompetitionFixturesToDataCompetitionFixturesMapper = RemoteCompetitionFixturesToDataCompetitionFixturesMapper()
             )
         )
     }
@@ -134,7 +142,8 @@ object AppModule {
     fun provideAllPresentationMappers(): AllPresentationMappers {
         return AllPresentationMappers(
             domainTodayFixtureToPresentationTodayFixtureMapper = DomainTodayFixtureToPresentationTodayFixtureMapper(),
-            domainCompetitionXToPresentationCompetitionXMapper = DomainCompetitionXToPresentationCompetitionXMapper()
+            domainCompetitionXToPresentationCompetitionXMapper = DomainCompetitionXToPresentationCompetitionXMapper(),
+            domainCompetitionFixtureToPresentationCompetitionFixtureMapper = DomainCompetitionFixtureToPresentationCompetitionFixtureMapper()
         )
     }
 

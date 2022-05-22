@@ -6,5 +6,8 @@ data class DataCompetitionX(
     val competitionName: String?,
     val competitionEmblem: String?,
     val currentMatchDay: Int?,
-    val nextMatchDay: Int?
+    val nextMatchDay: Int?,
+    val competitionCountryName: String?,
+    val competitionCode: String?,
+    val competitionCountryEmblem: String?
 )

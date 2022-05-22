@@ -22,7 +22,10 @@ class LocalDataCompetitionXListMapper: ToAndFroListMapper<LocalCompetitionX, Dat
             competitionName = from.competitionName,
             competitionEmblem = from.competitionEmblem,
             currentMatchDay = from.currentMatchDay,
-            nextMatchDay = from.nextMatchDay
+            nextMatchDay = from.nextMatchDay,
+            competitionCode = from.competitionCode,
+            competitionCountryEmblem = from.competitionCountryEmblem,
+            competitionCountryName = from.competitionCountryName
         )
     }
 
@@ -32,7 +35,10 @@ class LocalDataCompetitionXListMapper: ToAndFroListMapper<LocalCompetitionX, Dat
             competitionName = from.competitionName,
             competitionEmblem = from.competitionEmblem,
             currentMatchDay = from.currentMatchDay,
-            nextMatchDay = from.nextMatchDay
+            nextMatchDay = from.nextMatchDay,
+            competitionCode = from.competitionCode,
+            competitionCountryEmblem = from.competitionCountryEmblem,
+            competitionCountryName = from.competitionCountryName
         )
     }
 

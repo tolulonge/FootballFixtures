@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.navArgs
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.tolulonge.footballfixtures.R
@@ -17,6 +18,8 @@ class CompetitionFixturesFragment : Fragment() {
     private var _binding: FragmentCompetitionFixturesBinding? = null
 
     private val binding get() = _binding!!
+
+    val args: CompetitionFixturesFragmentArgs by navArgs()
 
 
     override fun onCreateView(
@@ -31,15 +34,15 @@ class CompetitionFixturesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val sectionsPagerAdapter = FixtureSelectionViewPagerAdapter(this)
-        Toast.makeText(context, "I am getting here", Toast.LENGTH_SHORT).show()
+
+        val sectionsPagerAdapter = FixtureSelectionViewPagerAdapter(this,args.competitionFixture)
 
         val viewPager = binding.pager
         viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = binding.tabLayout
 
         TabLayoutMediator(tabs, viewPager) { tab, position ->
-            tab.text = context?.resources?.getString(TAB_TITLES[position])
+            tab.text = context?.resources?.getStringArray(R.array.tab_titles)?.get(position)
         }.attach()
     }
 
@@ -50,9 +53,3 @@ class CompetitionFixturesFragment : Fragment() {
 
 
 }
-
-private val TAB_TITLES = arrayOf(
-    R.string.tab_text_1,
-    R.string.tab_text_2
-)
-

@@ -51,9 +51,8 @@ class CompetitionsFragment : Fragment() {
         subscribeToObservables()
 
         competitionsAdapter.setOnItemClickListener {
-            findNavController().navigate(
-                R.id.competition_fixtures_fragment
-            )
+            val action = CompetitionsFragmentDirections.actionNavigationCompetitionsToCompetitionFixturesFragment(it)
+            findNavController().navigate(action)
         }
 
         binding.noDataTextView.setOnClickListener {

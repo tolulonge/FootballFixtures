@@ -23,9 +23,11 @@ data class PresentationTodayFixture(
     val refereeName: String?
 )
 
+
 enum class MatchStatus {
     FINISHED,
     IN_PLAY,
     TIMED,
-    PAUSED
+    PAUSED,
+    UNAVAILABLE
 }

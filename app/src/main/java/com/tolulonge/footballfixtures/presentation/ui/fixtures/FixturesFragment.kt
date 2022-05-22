@@ -22,6 +22,7 @@ import com.tolulonge.footballfixtures.databinding.FragmentFixturesBinding
 import com.tolulonge.footballfixtures.presentation.adapters.FixturesAdapter
 import com.tolulonge.footballfixtures.presentation.event.FootballFixturesEvent
 import com.tolulonge.footballfixtures.presentation.state.FixtureFragmentUiState
+import com.tolulonge.footballfixtures.presentation.ui.competition.competitionfixtures.MatchDayFixtureFragment
 import com.tolulonge.footballfixtures.presentation.viewmodels.FixtureViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -34,7 +35,6 @@ class FixturesFragment : Fragment() {
     private var _binding: FragmentFixturesBinding? = null
     private lateinit var fixturesAdapter: FixturesAdapter
     private val fixtureViewModel by viewModels<FixtureViewModel>()
-    private var menu: Menu? = null
 
     private val binding get() = _binding!!
 
@@ -120,7 +120,6 @@ class FixturesFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        this.menu = menu
         inflater.inflate(R.menu.menu_fixtures, menu)
     }
 

@@ -2,6 +2,7 @@ package com.tolulonge.footballfixtures.di
 
 import com.tolulonge.footballfixtures.domain.repository.FootballFixturesRepository
 import com.tolulonge.footballfixtures.domain.usecases.FootballFixturesUseCases
+import com.tolulonge.footballfixtures.domain.usecases.GetCompetitionsFixturesList
 import com.tolulonge.footballfixtures.domain.usecases.GetCompetitionsList
 import com.tolulonge.footballfixtures.domain.usecases.GetTodayFixtures
 import dagger.Module
@@ -21,7 +22,8 @@ object DomainModule {
     ): FootballFixturesUseCases {
         return FootballFixturesUseCases(
            getFootballFixtures = GetTodayFixtures(repository),
-            getCompetitionsList = GetCompetitionsList(repository)
+            getCompetitionsList = GetCompetitionsList(repository),
+            getCompetitionFixturesList = GetCompetitionsFixturesList(repository)
         )
     }
 }

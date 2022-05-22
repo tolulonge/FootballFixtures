@@ -3,6 +3,7 @@ package com.tolulonge.footballfixtures.local.mapper
 import com.tolulonge.footballfixtures.core.mapper.ToAndFroListMapper
 import com.tolulonge.footballfixtures.data.model.DataTodayFixture
 import com.tolulonge.footballfixtures.local.model.LocalTodayFixture
+import com.tolulonge.footballfixtures.presentation.state.MatchStatus
 
 class LocalDataTodayFixtureListMapper: ToAndFroListMapper<LocalTodayFixture, DataTodayFixture> {
 
@@ -18,7 +19,7 @@ class LocalDataTodayFixtureListMapper: ToAndFroListMapper<LocalTodayFixture, Dat
         return DataTodayFixture(
             id = from.id,
             date = from.date,
-            status = from.status,
+            status = from.status?.let { it1 -> MatchStatus.valueOf(it1) },
             homeTeamName = from.homeTeamName,
             awayTeamName =  from.awayTeamName,
             homeTeamScore = from.homeTeamScore,
@@ -35,7 +36,7 @@ class LocalDataTodayFixtureListMapper: ToAndFroListMapper<LocalTodayFixture, Dat
         return LocalTodayFixture(
             id = from.id,
             date = from.date,
-            status = from.status,
+            status = from.status?.name,
             homeTeamName = from.homeTeamName,
             awayTeamName =  from.awayTeamName,
             homeTeamScore = from.homeTeamScore,

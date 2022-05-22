@@ -4,6 +4,7 @@ import com.tolulonge.footballfixtures.core.util.ApiStatus
 import com.tolulonge.footballfixtures.core.util.Resource
 import com.tolulonge.footballfixtures.data.model.DataCompetitionX
 import com.tolulonge.footballfixtures.domain.mapper.AllDomainMappers
+import com.tolulonge.footballfixtures.domain.model.DomainCompetitionFixture
 import com.tolulonge.footballfixtures.domain.model.DomainCompetitionX
 import com.tolulonge.footballfixtures.domain.model.DomainTodayFixture
 import com.tolulonge.footballfixtures.domain.repository.FootballFixturesRepository
@@ -70,6 +71,40 @@ class FootballFixturesRepositoryImpl(
                 {
                     allDomainMappers.dataCompetitionXToDomainCompetitionXMapper.map(
                         localDataSource.getCompetitionsList()
+                    )
+                }
+            )
+        }
+    }
+
+    override fun getCompetitionFixtures(
+        fetchFromRemote: Boolean,
+        competitionCode: String,
+        matchDay: Int
+    ): Flow<Resource<List<DomainCompetitionFixture>>> {
+        return flow {
+            emit(Resource.Loading(true))
+            val localCompetitionFixtures = localDataSource.getCompetitionFixtures(matchDay,competitionCode)
+
+            if (isFetchingResultFromDb(
+                    fetchFromRemote,
+                    localCompetitionFixtures
+                ) {
+                    allDomainMappers.dataCompetitionFixtureToDomainCompetitionFixtureMapper.map(
+                        localCompetitionFixtures
+                    )
+                }
+            ) return@flow
+            emit(Resource.Loading(true))
+            val response = remoteDataSource.getCompetitionFixtures(competitionCode, matchDay)
+            val dataCompetitionFixtures = retrieveContentFromRemote(response)
+
+            updateLocalFromRemoteAndEmitResult(
+                dataCompetitionFixtures,
+                { localDataSource.insertCompetitionFixtures(it) },
+                {
+                    allDomainMappers.dataCompetitionFixtureToDomainCompetitionFixtureMapper.map(
+                        localDataSource.getCompetitionFixtures(matchDay,competitionCode)
                     )
                 }
             )

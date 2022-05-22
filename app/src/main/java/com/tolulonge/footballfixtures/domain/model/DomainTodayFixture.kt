@@ -1,9 +1,11 @@
 package com.tolulonge.footballfixtures.domain.model
 
+import com.tolulonge.footballfixtures.presentation.state.MatchStatus
+
 data class DomainTodayFixture(
     val id: Int?,
     val date: String?,
-    val status: String?,
+    val status: MatchStatus?,
     val homeTeamName: String?,
     val awayTeamName: String?,
     val homeTeamScore: Int?,

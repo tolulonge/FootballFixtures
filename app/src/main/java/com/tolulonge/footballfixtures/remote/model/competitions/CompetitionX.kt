@@ -1,5 +1,8 @@
 package com.tolulonge.footballfixtures.remote.model.competitions
 
+import com.tolulonge.footballfixtures.remote.model.competitionfixtures.AreaX
+
+
 data class CompetitionX(
     val currentSeason: CurrentSeason?,
     val emblem: String?,
@@ -8,5 +11,7 @@ data class CompetitionX(
     val name: String?,
     val numberOfAvailableSeasons: Int?,
     val plan: String?,
-    val type: String?
+    val type: String?,
+    val area: AreaX,
+    val code: String?,
 )

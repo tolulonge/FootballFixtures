@@ -12,7 +12,7 @@ class DomainTodayFixtureToPresentationTodayFixtureMapper : ListMapper<DomainToda
                 PresentationTodayFixture(
                    id = it.id,
                    date = it.date,
-                   status = it.status?.let { it1 -> MatchStatus.valueOf(it1) },
+                   status = it.status,
                    homeTeamName = it.homeTeamName,
                    awayTeamName = it.awayTeamName,
                    homeTeamScore = it.homeTeamScore,

@@ -40,7 +40,7 @@ class FixtureViewModel @Inject constructor(
             is FootballFixturesEvent.RefreshEvents -> {
                 getTodayFixtures(fetchFromRemote = true)
             }
-
+            else -> {}
         }
     }
 

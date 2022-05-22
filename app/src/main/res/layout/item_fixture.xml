@@ -29,11 +29,21 @@
             android:id="@+id/txt_full_time_indicator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="FT"
             android:layout_marginStart="4dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="FT"
+            app:layout_constraintBottom_toBottomOf="@+id/img_home_team_logo"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/img_home_team_logo" />
+
+        <TextView
+            android:id="@+id/txt_current_time_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="20"
+            app:layout_constraintBottom_toBottomOf="@+id/img_away_team_logo"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toTopOf="@+id/img_away_team_logo" />
 
         <TextView
             android:id="@+id/txt_home_team"
