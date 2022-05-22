@@ -2,6 +2,7 @@ package com.tolulonge.footballfixtures.presentation.mapper
 
 import com.tolulonge.footballfixtures.core.mapper.ListMapper
 import com.tolulonge.footballfixtures.domain.model.DomainTodayFixture
+import com.tolulonge.footballfixtures.presentation.state.MatchStatus
 import com.tolulonge.footballfixtures.presentation.state.PresentationTodayFixture
 
 class DomainTodayFixtureToPresentationTodayFixtureMapper : ListMapper<DomainTodayFixture,PresentationTodayFixture> {
@@ -11,7 +12,7 @@ class DomainTodayFixtureToPresentationTodayFixtureMapper : ListMapper<DomainToda
                 PresentationTodayFixture(
                    id = it.id,
                    date = it.date,
-                   status = it.status,
+                   status = it.status?.let { it1 -> MatchStatus.valueOf(it1) },
                    homeTeamName = it.homeTeamName,
                    awayTeamName = it.awayTeamName,
                    homeTeamScore = it.homeTeamScore,

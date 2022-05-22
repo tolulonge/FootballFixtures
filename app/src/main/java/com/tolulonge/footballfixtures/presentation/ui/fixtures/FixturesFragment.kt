@@ -64,7 +64,7 @@ class FixturesFragment : Fragment() {
         }
 
         binding.noDataTextView.setOnClickListener {
-            fixtureViewModel.onEvent(FootballFixturesEvent.RefreshFixtures)
+            fixtureViewModel.onEvent(FootballFixturesEvent.RefreshEvents)
         }
     }
 
@@ -89,7 +89,7 @@ class FixturesFragment : Fragment() {
                         is FixtureFragmentUiState.Error -> {
                             if (it.message.isNotEmpty())
                                 binding.root.showSnackBarWithAction(it.message, "Retry") {
-                                    fixtureViewModel.onEvent(FootballFixturesEvent.RefreshFixtures)
+                                    fixtureViewModel.onEvent(FootballFixturesEvent.RefreshEvents)
                                 }
                         }
                         is FixtureFragmentUiState.Loaded -> {
@@ -127,7 +127,7 @@ class FixturesFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_reload_fixutres -> {
-                fixtureViewModel.onEvent(FootballFixturesEvent.RefreshFixtures)
+                fixtureViewModel.onEvent(FootballFixturesEvent.RefreshEvents)
                 true
             }
 

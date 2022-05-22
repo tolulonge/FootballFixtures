@@ -1,4 +1,4 @@
-package com.tolulonge.footballfixtures.ui.competition.competitionfixtures
+package com.tolulonge.footballfixtures.presentation.ui.competition.competitionfixtures
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.tolulonge.footballfixtures.R
-import com.tolulonge.footballfixtures.databinding.FragmentFixturesBinding
 import com.tolulonge.footballfixtures.databinding.FragmentMatchDayFixtureBinding
 import com.tolulonge.footballfixtures.presentation.adapters.FixturesAdapter
 

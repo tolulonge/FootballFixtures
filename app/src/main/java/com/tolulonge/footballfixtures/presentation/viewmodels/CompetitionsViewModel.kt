@@ -10,6 +10,7 @@ import com.tolulonge.footballfixtures.domain.usecases.FootballFixturesUseCases
 import com.tolulonge.footballfixtures.presentation.event.FootballFixturesEvent
 import com.tolulonge.footballfixtures.presentation.mapper.AllPresentationMappers
 import com.tolulonge.footballfixtures.presentation.mapper.DomainTodayFixtureToPresentationTodayFixtureMapper
+import com.tolulonge.footballfixtures.presentation.state.CompetitionsFragmentUiState
 import com.tolulonge.footballfixtures.presentation.state.FixtureFragmentUiState
 import com.tolulonge.footballfixtures.presentation.state.PresentationTodayFixture
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -22,48 +23,48 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class FixtureViewModel @Inject constructor(
+class CompetitionsViewModel @Inject constructor(
     private val footballFixturesUseCases: FootballFixturesUseCases,
     private val allPresentationMappers: AllPresentationMappers
 ) : ViewModel() {
 
-    private val _todayFixtures = MutableStateFlow<FixtureFragmentUiState>(FixtureFragmentUiState.Empty)
-    val todayFixtures = _todayFixtures.asStateFlow()
+    private val _competitionsList = MutableStateFlow<CompetitionsFragmentUiState>(CompetitionsFragmentUiState.Empty)
+    val competitionsList = _competitionsList.asStateFlow()
 
 
     init {
-        getTodayFixtures(false)
+        getCompetitionsList(false)
     }
 
     fun onEvent(event: FootballFixturesEvent) {
         when(event) {
             is FootballFixturesEvent.RefreshEvents -> {
-                getTodayFixtures(fetchFromRemote = true)
+                getCompetitionsList(fetchFromRemote = true)
             }
 
         }
     }
 
-    private fun getTodayFixtures(fetchFromRemote: Boolean) {
+    private fun getCompetitionsList(fetchFromRemote: Boolean) {
         viewModelScope.launch {
-            footballFixturesUseCases.getFootballFixtures(fetchFromRemote)
+            footballFixturesUseCases.getCompetitionsList(fetchFromRemote)
                 .collect { result ->
                     when(result) {
                         is Resource.Success -> {
-                            result.data?.let { fixtures ->
-                                _todayFixtures.value = FixtureFragmentUiState.Loaded(
-                                   allPresentationMappers.domainTodayFixtureToPresentationTodayFixtureMapper.map(fixtures),
+                            result.data?.let { competitions ->
+                                _competitionsList.value = CompetitionsFragmentUiState.Loaded(
+                                   allPresentationMappers.domainCompetitionXToPresentationCompetitionXMapper.map(competitions),
                                     result.message ?: ""
                                     )
                             }
                         }
                         is Resource.Error -> {
-                            _todayFixtures.value = FixtureFragmentUiState.Error(result.message ?: "")
-                            _todayFixtures.value = FixtureFragmentUiState.Loading(false)
+                            _competitionsList.value = CompetitionsFragmentUiState.Error(result.message ?: "")
+                            _competitionsList.value = CompetitionsFragmentUiState.Loading(false)
 
                         }
                         is Resource.Loading -> {
-                           _todayFixtures.value = FixtureFragmentUiState.Loading(result.isLoading)
+                           _competitionsList.value = CompetitionsFragmentUiState.Loading(result.isLoading)
                         }
                     }
                 }

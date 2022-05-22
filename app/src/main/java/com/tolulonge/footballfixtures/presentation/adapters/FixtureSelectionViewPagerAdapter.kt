@@ -4,7 +4,7 @@ package com.tolulonge.footballfixtures.presentation.adapters
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-import com.tolulonge.footballfixtures.ui.competition.competitionfixtures.MatchDayFixtureFragment
+import com.tolulonge.footballfixtures.presentation.ui.competition.competitionfixtures.MatchDayFixtureFragment
 
 
 

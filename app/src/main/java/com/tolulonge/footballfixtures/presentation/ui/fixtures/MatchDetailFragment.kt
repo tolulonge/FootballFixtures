@@ -1,4 +1,4 @@
-package com.tolulonge.footballfixtures.ui.fixtures
+package com.tolulonge.footballfixtures.presentation.ui.fixtures
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

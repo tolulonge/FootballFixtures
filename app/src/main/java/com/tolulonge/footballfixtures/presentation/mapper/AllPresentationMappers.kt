@@ -1,0 +1,6 @@
+package com.tolulonge.footballfixtures.presentation.mapper
+
+class AllPresentationMappers(
+    val domainTodayFixtureToPresentationTodayFixtureMapper: DomainTodayFixtureToPresentationTodayFixtureMapper,
+    val domainCompetitionXToPresentationCompetitionXMapper: DomainCompetitionXToPresentationCompetitionXMapper,
+)

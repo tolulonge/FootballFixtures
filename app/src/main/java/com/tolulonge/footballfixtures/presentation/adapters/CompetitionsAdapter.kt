@@ -6,27 +6,33 @@ import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.tolulonge.footballfixtures.core.util.loadSvgOrOther
 import com.tolulonge.footballfixtures.databinding.ItemCompetitionBinding
+import com.tolulonge.footballfixtures.presentation.state.PresentationCompetitionX
 
 class CompetitionsAdapter : RecyclerView.Adapter<CompetitionsAdapter.CompetitionsViewHolder>() {
 
     inner class CompetitionsViewHolder(private val binding: ItemCompetitionBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(competition: Competition) {
-            binding.txtCompetitionName.text = competition.competitionName
+        fun bind(competitionX: PresentationCompetitionX) {
+            with(competitionX){
+                competitionEmblem?.let { binding.imgCompetitionLogo.loadSvgOrOther(it) }
+                binding.txtCompetitionName.text = competitionName ?: ""
+
+            }
             binding.imgNavigateToCompetitionDetails.setOnClickListener {
                 onItemClickListener?.let {
-                    it(competition)
+                    it(competitionX)
                 }
             }
         }
     }
 
-    private val differCallback = object : DiffUtil.ItemCallback<Competition>() {
-        override fun areItemsTheSame(oldItem: Competition, newItem: Competition): Boolean {
+    private val differCallback = object : DiffUtil.ItemCallback<PresentationCompetitionX>() {
+        override fun areItemsTheSame(oldItem: PresentationCompetitionX, newItem: PresentationCompetitionX): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: Competition, newItem: Competition): Boolean {
+        override fun areContentsTheSame(oldItem: PresentationCompetitionX, newItem: PresentationCompetitionX): Boolean {
             return oldItem == newItem
         }
     }
@@ -54,9 +60,9 @@ class CompetitionsAdapter : RecyclerView.Adapter<CompetitionsAdapter.Competition
         }
     }
 
-    private var onItemClickListener: ((Competition) -> Unit)? = null
+    private var onItemClickListener: ((PresentationCompetitionX) -> Unit)? = null
 
-    fun setOnItemClickListener(listener: (Competition) -> Unit) {
+    fun setOnItemClickListener(listener: (PresentationCompetitionX) -> Unit) {
         onItemClickListener = listener
     }
 
