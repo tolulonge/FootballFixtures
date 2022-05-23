@@ -42,6 +42,7 @@ class CompetitionsViewModel @Inject constructor(
                 getCompetitionsList(fetchFromRemote = true)
             }
 
+            else -> {}
         }
     }
 

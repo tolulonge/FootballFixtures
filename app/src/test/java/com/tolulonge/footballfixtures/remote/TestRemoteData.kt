@@ -14,7 +14,7 @@ object TestRemoteData {
             date = "2022-07-23T00:00:00Z",
             status = MatchStatus.FINISHED,
             homeTeamName = "Besiktas",
-            awayTeamName = "Galatasary",
+            awayTeamName = "Galatasaray",
             homeTeamScore = 3,
             awayTeamScore = 2,
             homeTeamLogo = "https://crests.football-data.org/328.png",
