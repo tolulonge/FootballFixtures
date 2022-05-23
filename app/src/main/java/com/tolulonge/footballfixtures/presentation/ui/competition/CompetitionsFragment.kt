@@ -13,7 +13,6 @@ import com.tolulonge.footballfixtures.core.util.show
 import com.tolulonge.footballfixtures.core.util.showSnackBar
 import com.tolulonge.footballfixtures.core.util.showSnackBarWithAction
 import com.tolulonge.footballfixtures.databinding.FragmentCompetitionsBinding
-import com.tolulonge.footballfixtures.presentation.adapters.Competition
 import com.tolulonge.footballfixtures.presentation.adapters.CompetitionsAdapter
 import com.tolulonge.footballfixtures.presentation.event.FootballFixturesEvent
 import com.tolulonge.footballfixtures.presentation.state.CompetitionsFragmentUiState
@@ -51,7 +50,7 @@ class CompetitionsFragment : Fragment() {
         subscribeToObservables()
 
         competitionsAdapter.setOnItemClickListener {
-            val action = CompetitionsFragmentDirections.actionNavigationCompetitionsToCompetitionFixturesFragment(it)
+            val action = CompetitionsFragmentDirections.actionNavigationCompetitionsToCompetitionFixturesFragment(it,it.competitionName ?: "Competition")
             findNavController().navigate(action)
         }
 

@@ -23,7 +23,9 @@ class DomainCompetitionFixtureToPresentationCompetitionFixtureMapper : ListMappe
                    awayTeamLogo = it.awayTeamLogo,
                    countryOfFixture = it.countryOfFixture,
                    competitionName = it.competitionName,
-                   refereeName = it.refereeName
+                   refereeName = it.refereeName,
+                    competitionEmblem = it.competitionEmblem,
+                    countryFlag = it.countryFlag
                 )
             }
         }

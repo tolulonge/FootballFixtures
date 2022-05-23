@@ -22,5 +22,7 @@ data class LocalCompetitionFixture(
     val competitionName: String?,
     val refereeName: String?,
     val matchDay: Int?,
-    val competitionCode: String?
+    val competitionCode: String?,
+    val competitionEmblem: String?,
+    val countryFlag: String?
 )

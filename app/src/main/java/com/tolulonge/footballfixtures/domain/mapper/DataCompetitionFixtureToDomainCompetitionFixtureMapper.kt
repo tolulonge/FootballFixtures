@@ -21,7 +21,9 @@ class DataCompetitionFixtureToDomainCompetitionFixtureMapper: ListMapper<DataCom
                 awayTeamLogo = it.awayTeamLogo,
                 competitionName = it.competitionName,
                 countryOfFixture = it.countryOfFixture,
-                refereeName = it.refereeName
+                refereeName = it.refereeName,
+                competitionEmblem = it.competitionEmblem,
+                countryFlag = it.countryFlag
             )
         }
     }

@@ -9,7 +9,11 @@
         android:id="@+id/navigation_fixtures"
         android:name="com.tolulonge.footballfixtures.presentation.ui.fixtures.FixturesFragment"
         android:label="@string/title_fixtures"
-        tools:layout="@layout/fragment_fixtures" />
+        tools:layout="@layout/fragment_fixtures" >
+        <action
+            android:id="@+id/action_navigation_fixtures_to_match_detail_fragment"
+            app:destination="@id/match_detail_fragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_competitions"
@@ -23,16 +27,27 @@
     <fragment
         android:id="@+id/match_detail_fragment"
         android:name="com.tolulonge.footballfixtures.presentation.ui.fixtures.MatchDetailFragment"
-        android:label="fragment_match_detail"
-        tools:layout="@layout/fragment_match_detail" />
+        android:label="Match Detail"
+        tools:layout="@layout/fragment_match_detail" >
+        <argument
+            android:name="matchDetail"
+            app:argType="com.tolulonge.footballfixtures.presentation.state.PresentationTodayFixture" />
+    </fragment>
     <fragment
         android:id="@+id/competition_fixtures_fragment"
         android:name="com.tolulonge.footballfixtures.presentation.ui.competition.competitionfixtures.CompetitionFixturesFragment"
-        android:label="fragment_competition_fixtures"
+        android:label="{title}"
         tools:layout="@layout/fragment_competition_fixtures" >
         <argument
             android:name="competitionFixture"
             app:argType="com.tolulonge.footballfixtures.presentation.state.PresentationCompetitionX" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_competition_fixtures_fragment_to_match_detail_fragment"
+            app:destination="@id/match_detail_fragment" />
+
     </fragment>
 
 </navigation>

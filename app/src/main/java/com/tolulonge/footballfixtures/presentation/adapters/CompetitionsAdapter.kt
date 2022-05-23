@@ -68,7 +68,4 @@ class CompetitionsAdapter : RecyclerView.Adapter<CompetitionsAdapter.Competition
 
 }
 
-data class Competition(
-    val id: Int,
-    val competitionName: String,
-   )
+

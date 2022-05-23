@@ -1,5 +1,8 @@
 package com.tolulonge.footballfixtures.presentation.state
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
 
 sealed class FixtureFragmentUiState {
     object Empty : FixtureFragmentUiState()
@@ -8,6 +11,7 @@ sealed class FixtureFragmentUiState {
     data class Error(val message: String) : FixtureFragmentUiState()
 }
 
+@Parcelize
 data class PresentationTodayFixture(
     val id: Int?,
     val date: String?,
@@ -20,8 +24,10 @@ data class PresentationTodayFixture(
     val awayTeamLogo: String?,
     val countryOfFixture: String?,
     val competitionName: String?,
-    val refereeName: String?
-)
+    val refereeName: String?,
+    val countryFlag: String?,
+    val competitionEmblem: String?
+):Parcelable
 
 
 enum class MatchStatus {

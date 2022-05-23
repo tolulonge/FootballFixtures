@@ -14,6 +14,7 @@ import com.tolulonge.footballfixtures.databinding.FragmentMatchDayFixtureBinding
 import com.tolulonge.footballfixtures.presentation.adapters.FixturesAdapter
 import com.tolulonge.footballfixtures.presentation.event.FootballFixturesEvent
 import com.tolulonge.footballfixtures.presentation.state.*
+import com.tolulonge.footballfixtures.presentation.ui.competition.CompetitionsFragmentDirections
 import com.tolulonge.footballfixtures.presentation.viewmodels.CompetitionFixturesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -65,8 +66,9 @@ class MatchDayFixtureFragment : Fragment() {
         ))
 
         fixturesAdapter.setOnItemClickListener {
+            val action = CompetitionFixturesFragmentDirections.actionCompetitionFixturesFragmentToMatchDetailFragment(it)
             findNavController().navigate(
-                R.id.match_detail_fragment
+               action
             )
         }
     }
@@ -180,7 +182,7 @@ class MatchDayFixtureFragment : Fragment() {
         fixturesAdapter.differ.submitList(listOf(PresentationTodayFixture(
             null,"",MatchStatus.UNAVAILABLE,"No Data Available","",
             null,null,"",""
-            ,"","",null
+            ,"","",null,null,null
         )))
     }
 }

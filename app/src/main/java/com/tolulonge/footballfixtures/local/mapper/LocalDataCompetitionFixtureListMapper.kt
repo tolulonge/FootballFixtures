@@ -32,7 +32,9 @@ class LocalDataCompetitionFixtureListMapper: ToAndFroListMapper<LocalCompetition
             competitionName = from.competitionName,
             refereeName = from.refereeName,
             matchDay = from.matchDay,
-            competitionCode = from.competitionCode
+            competitionCode = from.competitionCode,
+            competitionEmblem = from.competitionEmblem,
+            countryFlag = from.countryFlag
         )
     }
 
@@ -51,7 +53,9 @@ class LocalDataCompetitionFixtureListMapper: ToAndFroListMapper<LocalCompetition
             competitionName = from.competitionName,
             refereeName = from.refereeName,
             matchDay = from.matchDay,
-            competitionCode = from.competitionCode
+            competitionCode = from.competitionCode,
+            competitionEmblem = from.competitionEmblem,
+            countryFlag = from.countryFlag
         )
     }
 

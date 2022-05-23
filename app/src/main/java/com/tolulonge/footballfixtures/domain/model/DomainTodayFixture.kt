@@ -14,5 +14,8 @@ data class DomainTodayFixture(
     val awayTeamLogo: String?,
     val countryOfFixture: String?,
     val competitionName: String?,
-    val refereeName: String?
+    val refereeName: String?,
+    val competitionEmblem: String?,
+    val countryFlag: String?,
+    val elapsedTime: String? = null
 )

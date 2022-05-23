@@ -57,9 +57,9 @@ class FixturesFragment : Fragment() {
         subscribeToObservables()
 
         fixturesAdapter.setOnItemClickListener {
-            Toast.makeText(requireContext(), it.homeTeamName, Toast.LENGTH_SHORT).show()
+            val action = FixturesFragmentDirections.actionNavigationFixturesToMatchDetailFragment(it)
             findNavController().navigate(
-               R.id.match_detail_fragment
+               action
             )
         }
 

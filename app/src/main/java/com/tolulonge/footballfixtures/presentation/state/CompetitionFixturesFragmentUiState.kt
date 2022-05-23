@@ -23,7 +23,10 @@ data class PresentationCompetitionFixture(
     val awayTeamLogo: String?,
     val countryOfFixture: String?,
     val competitionName: String?,
-    val refereeName: String?
+    val refereeName: String?,
+    val countryFlag: String?,
+    val competitionEmblem: String?,
+    val elapsedTime: String? = null
 )
 
 fun PresentationCompetitionFixture.toPresentationTodayFixture(): PresentationTodayFixture {
@@ -39,7 +42,9 @@ fun PresentationCompetitionFixture.toPresentationTodayFixture(): PresentationTod
         awayTeamLogo = awayTeamLogo,
         countryOfFixture = countryOfFixture,
         competitionName = competitionName,
-        refereeName = refereeName
+        refereeName = refereeName,
+        countryFlag = countryFlag,
+        competitionEmblem = competitionEmblem
     )
 }
 

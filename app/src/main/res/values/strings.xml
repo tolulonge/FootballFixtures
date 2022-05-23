@@ -7,6 +7,7 @@
     <string name="tab_text_1">Current MatchDay</string>
     <string name="tab_text_2">Next MatchDay</string>
     <string name="no_data">No Data Available Yet\nTap Here To Refresh</string>
+    <string name="referee_name">Referee: %1$s</string>
 
     <string-array name="tab_titles">
         <item>@string/tab_text_1</item>

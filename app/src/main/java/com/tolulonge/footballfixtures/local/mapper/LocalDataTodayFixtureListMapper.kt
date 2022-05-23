@@ -28,7 +28,9 @@ class LocalDataTodayFixtureListMapper: ToAndFroListMapper<LocalTodayFixture, Dat
             homeTeamLogo = from.homeTeamLogo,
             countryOfFixture = from.countryOfFixture,
             competitionName = from.competitionName,
-            refereeName = from.refereeName
+            refereeName = from.refereeName,
+            competitionEmblem = from.competitionEmblem,
+            countryFlag = from.countryFlag
         )
     }
 
@@ -45,7 +47,9 @@ class LocalDataTodayFixtureListMapper: ToAndFroListMapper<LocalTodayFixture, Dat
             homeTeamLogo = from.homeTeamLogo,
             countryOfFixture = from.countryOfFixture,
             competitionName = from.competitionName,
-            refereeName = from.refereeName
+            refereeName = from.refereeName,
+            competitionEmblem = from.competitionEmblem,
+            countryFlag = from.countryFlag
         )
     }
 

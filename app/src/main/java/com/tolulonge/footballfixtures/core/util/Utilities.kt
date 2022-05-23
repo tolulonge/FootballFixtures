@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.snackbar.Snackbar
 import com.tolulonge.footballfixtures.R
+import com.tolulonge.footballfixtures.presentation.state.MatchStatus
 
 fun View.showSnackBar(message: String) {
     Snackbar.make(this, message, Snackbar.LENGTH_LONG).setTextColor(ContextCompat.getColor(this.context, R.color.white))

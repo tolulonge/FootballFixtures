@@ -1,10 +1,7 @@
 package com.tolulonge.footballfixtures.di
 
 import com.tolulonge.footballfixtures.domain.repository.FootballFixturesRepository
-import com.tolulonge.footballfixtures.domain.usecases.FootballFixturesUseCases
-import com.tolulonge.footballfixtures.domain.usecases.GetCompetitionsFixturesList
-import com.tolulonge.footballfixtures.domain.usecases.GetCompetitionsList
-import com.tolulonge.footballfixtures.domain.usecases.GetTodayFixtures
+import com.tolulonge.footballfixtures.domain.usecases.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,7 +15,7 @@ object DomainModule {
     @ViewModelScoped
     @Provides
     fun provideFootballFixturesUseCases(
-        repository: FootballFixturesRepository
+        repository: FootballFixturesRepository,
     ): FootballFixturesUseCases {
         return FootballFixturesUseCases(
            getFootballFixtures = GetTodayFixtures(repository),

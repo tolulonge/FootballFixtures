@@ -41,6 +41,8 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Named
 import javax.inject.Singleton
 
@@ -152,4 +154,5 @@ object AppModule {
     fun providesApiKey(): String{
         return API_KEY
     }
+
 }

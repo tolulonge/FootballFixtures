@@ -25,7 +25,9 @@ class RemoteCompetitionFixturesToDataCompetitionFixturesMapper: ListMapper<Match
                 countryOfFixture = it.area?.name,
                 refereeName = it.referees?.firstOrNull()?.name,
                 matchDay = it.matchday,
-                competitionCode = it.competition?.code
+                competitionCode = it.competition?.code,
+                competitionEmblem = it.competition?.emblem,
+                countryFlag = it.area?.flag
             )
         }
     }

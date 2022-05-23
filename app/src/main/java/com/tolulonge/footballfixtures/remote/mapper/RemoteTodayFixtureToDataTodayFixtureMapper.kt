@@ -21,7 +21,9 @@ class RemoteTodayFixtureToDataTodayFixtureMapper: ListMapper<Match,DataTodayFixt
                 awayTeamLogo = it.awayTeam?.crest,
                 competitionName = it.competition?.name,
                 countryOfFixture = it.area?.name,
-                refereeName = it.referees?.firstOrNull()?.name
+                refereeName = it.referees?.firstOrNull()?.name,
+                competitionEmblem = it.competition?.emblem,
+                countryFlag = it.area?.flag
             )
         }
     }
