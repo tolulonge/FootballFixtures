@@ -6,8 +6,33 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tab_text_1">Current MatchDay</string>
     <string name="tab_text_2">Next MatchDay</string>
-    <string name="no_data">No Data Available Yet\nTap Here To Refresh</string>
+    <string name="no_data">No Data Available Today\n\nTap Here To Refresh</string>
     <string name="referee_name">Referee: %1$s</string>
+    <string name="competition_fixtures">Competition Fixtures</string>
+    <string name="no_data_image">No Data</string>
+    <string name="european_championship">European Championship</string>
+    <string name="country_image">country_image</string>
+    <string name="england">England</string>
+    <string name="_24">24</string>
+    <string name="match_day">Match Day</string>
+    <string name="match_country_flag">match_country_flag</string>
+    <string name="italy">Italy</string>
+    <string name="_2022_05_20_18_45_00z">2022-05-20 18:45:00Z</string>
+    <string name="competition_emblem">competition_emblem</string>
+    <string name="ligue_1">Ligue 1</string>
+    <string name="home_team_flag">Home Team Flag</string>
+    <string name="away_team_flag">Away Team Flag</string>
+    <string name="atlanta">Atlanta</string>
+    <string name="deportivo_malpu">Deportivo Malpu</string>
+    <string name="zero">0</string>
+    <string name="ft">FT</string>
+    <string name="referee_massimiliano_irrati">Referee: Massimiliano Irrati</string>
+    <string name="as_roma">As Roma</string>
+    <string name="navigate_next">Navigate Next</string>
+    <string name="as_roma_home">As Roma</string>
+    <string name="levante_fc">Levante FC</string>
+    <string name="_3">3</string>
+    <string name="refresh">Refresh</string>
 
     <string-array name="tab_titles">
         <item>@string/tab_text_1</item>

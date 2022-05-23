@@ -19,7 +19,8 @@ class FixtureViewModel @Inject constructor(
     private val allPresentationMappers: AllPresentationMappers
 ) : ViewModel() {
 
-    private val _todayFixtures = MutableStateFlow<FixtureFragmentUiState>(FixtureFragmentUiState.Empty)
+    private val _todayFixtures =
+        MutableStateFlow<FixtureFragmentUiState>(FixtureFragmentUiState.Empty)
     val todayFixtures = _todayFixtures.asStateFlow()
 
 
@@ -28,7 +29,7 @@ class FixtureViewModel @Inject constructor(
     }
 
     fun onEvent(event: FootballFixturesEvent) {
-        when(event) {
+        when (event) {
             is FootballFixturesEvent.RefreshEvents -> {
                 getTodayFixtures(fetchFromRemote = true)
             }
@@ -36,26 +37,32 @@ class FixtureViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Emits respective flow based on response from remote or database
+     */
     private fun getTodayFixtures(fetchFromRemote: Boolean) {
         viewModelScope.launch {
             footballFixturesUseCases.getFootballFixtures(fetchFromRemote)
                 .collect { result ->
-                    when(result) {
+                    when (result) {
                         is Resource.Success -> {
                             result.data?.let { fixtures ->
                                 _todayFixtures.value = FixtureFragmentUiState.Loaded(
-                                   allPresentationMappers.domainTodayFixtureToPresentationTodayFixtureMapper.map(fixtures),
+                                    allPresentationMappers.domainTodayFixtureToPresentationTodayFixtureMapper.map(
+                                        fixtures
+                                    ),
                                     result.message ?: ""
-                                    )
+                                )
                             }
                         }
                         is Resource.Error -> {
-                            _todayFixtures.value = FixtureFragmentUiState.Error(result.message ?: "")
+                            _todayFixtures.value =
+                                FixtureFragmentUiState.Error(result.message ?: "")
                             _todayFixtures.value = FixtureFragmentUiState.Loading(false)
 
                         }
                         is Resource.Loading -> {
-                           _todayFixtures.value = FixtureFragmentUiState.Loading(result.isLoading)
+                            _todayFixtures.value = FixtureFragmentUiState.Loading(result.isLoading)
                         }
                     }
                 }

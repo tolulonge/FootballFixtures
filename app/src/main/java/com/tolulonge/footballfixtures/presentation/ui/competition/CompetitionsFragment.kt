@@ -2,7 +2,6 @@ package com.tolulonge.footballfixtures.presentation.ui.competition
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -16,9 +15,7 @@ import com.tolulonge.footballfixtures.databinding.FragmentCompetitionsBinding
 import com.tolulonge.footballfixtures.presentation.adapters.CompetitionsAdapter
 import com.tolulonge.footballfixtures.presentation.event.FootballFixturesEvent
 import com.tolulonge.footballfixtures.presentation.state.CompetitionsFragmentUiState
-import com.tolulonge.footballfixtures.presentation.state.FixtureFragmentUiState
 import com.tolulonge.footballfixtures.presentation.viewmodels.CompetitionsViewModel
-import com.tolulonge.footballfixtures.presentation.viewmodels.FixtureViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
@@ -50,7 +47,11 @@ class CompetitionsFragment : Fragment() {
         subscribeToObservables()
 
         competitionsAdapter.setOnItemClickListener {
-            val action = CompetitionsFragmentDirections.actionNavigationCompetitionsToCompetitionFixturesFragment(it,it.competitionName ?: "Competition")
+            val action =
+                CompetitionsFragmentDirections.actionNavigationCompetitionsToCompetitionFixturesFragment(
+                    it,
+                    it.competitionName ?: "Competition"
+                )
             findNavController().navigate(action)
         }
 
@@ -60,17 +61,16 @@ class CompetitionsFragment : Fragment() {
     }
 
 
-    private fun setUpRecyclerView(){
+    private fun setUpRecyclerView() {
         competitionsAdapter = CompetitionsAdapter()
         binding.recyclerViewCompetitions.adapter = competitionsAdapter
     }
 
 
-    private fun subscribeToObservables(){
+    private fun subscribeToObservables() {
         lifecycleScope.launchWhenStarted {
-
             competitionsViewModel.competitionsList.collectLatest {
-                when(it){
+                when (it) {
                     CompetitionsFragmentUiState.Empty -> {
                         handleDataAndEmptyScenarios(false)
                     }
@@ -90,9 +90,9 @@ class CompetitionsFragment : Fragment() {
                     }
                     is CompetitionsFragmentUiState.Loading -> {
                         handleDataAndEmptyScenarios(true)
-                        if (it.isLoading){
+                        if (it.isLoading) {
                             binding.progressBar.show()
-                        }else{
+                        } else {
                             binding.progressBar.hide()
                         }
                     }
@@ -123,14 +123,14 @@ class CompetitionsFragment : Fragment() {
         }
     }
 
-    private fun handleDataAndEmptyScenarios(isAvailable: Boolean){
-        if(isAvailable){
+    private fun handleDataAndEmptyScenarios(isAvailable: Boolean) {
+        if (isAvailable) {
             binding.apply {
                 noDataImageView.hide()
                 noDataTextView.hide()
 
             }
-        }else{
+        } else {
             binding.apply {
                 noDataImageView.show()
                 noDataTextView.show()
@@ -139,6 +139,7 @@ class CompetitionsFragment : Fragment() {
         }
 
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

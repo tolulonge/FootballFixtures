@@ -2,9 +2,7 @@ package com.tolulonge.footballfixtures.domain.mapper
 
 import com.tolulonge.footballfixtures.core.mapper.ListMapper
 import com.tolulonge.footballfixtures.data.model.DataCompetitionX
-import com.tolulonge.footballfixtures.data.model.DataTodayFixture
 import com.tolulonge.footballfixtures.domain.model.DomainCompetitionX
-import com.tolulonge.footballfixtures.domain.model.DomainTodayFixture
 
 class DataCompetitionXToDomainCompetitionXMapper: ListMapper<DataCompetitionX, DomainCompetitionX> {
     override fun map(input: List<DataCompetitionX>): List<DomainCompetitionX> = with(input){

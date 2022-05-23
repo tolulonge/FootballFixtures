@@ -3,7 +3,9 @@ package com.tolulonge.footballfixtures.presentation.state
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
-
+/**
+ * Sealed for that holds the state of the FixturesFragment
+ */
 sealed class FixtureFragmentUiState {
     object Empty : FixtureFragmentUiState()
     data class Loading(val isLoading: Boolean) : FixtureFragmentUiState()

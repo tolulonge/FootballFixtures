@@ -5,8 +5,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.tolulonge.footballfixtures.local.model.LocalCompetitionFixture
-import com.tolulonge.footballfixtures.local.model.LocalTodayFixture
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface CompetitionFixturesDao {

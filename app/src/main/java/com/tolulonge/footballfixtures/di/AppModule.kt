@@ -1,10 +1,7 @@
 package com.tolulonge.footballfixtures.di
 
 import android.app.Application
-import android.content.Context
-import android.content.SharedPreferences
 import androidx.room.Room
-import com.google.gson.Gson
 import com.tolulonge.footballfixtures.core.util.API_KEY
 import com.tolulonge.footballfixtures.data.repository.FootballFixturesRepositoryImpl
 import com.tolulonge.footballfixtures.data.repository.LocalDataSource
@@ -33,7 +30,6 @@ import com.tolulonge.footballfixtures.remote.source.RemoteDataSourceImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -41,9 +37,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
-import java.text.SimpleDateFormat
-import java.util.*
-import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -81,7 +74,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideAttendanceDatabase(app: Application): FootballFixturesDatabase{
+    fun provideAttendanceDatabase(app: Application): FootballFixturesDatabase {
         return Room.databaseBuilder(
             app,
             FootballFixturesDatabase::class.java,
@@ -151,7 +144,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun providesApiKey(): String{
+    fun providesApiKey(): String {
         return API_KEY
     }
 

@@ -8,7 +8,6 @@ import com.tolulonge.footballfixtures.local.database.CompetitionFixturesDao
 import com.tolulonge.footballfixtures.local.database.CompetitionsDao
 import com.tolulonge.footballfixtures.local.database.TodayFixturesDao
 import com.tolulonge.footballfixtures.local.mapper.AllLocalMappers
-import com.tolulonge.footballfixtures.local.mapper.LocalDataTodayFixtureListMapper
 
 
 class LocalDataSourceImpl(

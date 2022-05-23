@@ -1,28 +1,20 @@
 package com.tolulonge.footballfixtures.presentation.ui.fixtures
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.tolulonge.footballfixtures.R
 import com.tolulonge.footballfixtures.core.util.loadSvgOrOther
-import com.tolulonge.footballfixtures.databinding.FragmentFixturesBinding
 import com.tolulonge.footballfixtures.databinding.FragmentMatchDetailBinding
 import com.tolulonge.footballfixtures.presentation.state.MatchStatus
 import com.tolulonge.footballfixtures.presentation.state.PresentationTodayFixture
 
 class MatchDetailFragment : Fragment() {
     private var _binding: FragmentMatchDetailBinding? = null
-
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
     private val args: MatchDetailFragmentArgs by navArgs()
 
@@ -48,8 +40,8 @@ class MatchDetailFragment : Fragment() {
         _binding = null
     }
 
-    private fun setupViews(fixture: PresentationTodayFixture){
-        with(fixture){
+    private fun setupViews(fixture: PresentationTodayFixture) {
+        with(fixture) {
             binding.apply {
                 txtMatchCountryName.text = countryOfFixture
                 txtMatchCompetitionName.text = competitionName
@@ -58,7 +50,7 @@ class MatchDetailFragment : Fragment() {
                 txtMatchDetailAwayTeam.text = awayTeamName
                 txtMatchDetailAwayScore.text = (awayTeamScore ?: "").toString()
                 txtMatchDetailHomeScore.text = (homeTeamScore ?: "").toString()
-                txtMatchDetailReferee.text = getString(R.string.referee_name,refereeName ?: "")
+                txtMatchDetailReferee.text = getString(R.string.referee_name, refereeName ?: "")
                 homeTeamLogo?.let { imgMatchDetailHomeTeam.loadSvgOrOther(it) }
                 awayTeamLogo?.let { imgMatchDetailAwayTeam.loadSvgOrOther(it) }
                 countryFlag?.let { imgMatchCountryFlag.loadSvgOrOther(it) }
@@ -69,35 +61,55 @@ class MatchDetailFragment : Fragment() {
     }
 
 
-    private fun getMatchStatus(matchStatus: MatchStatus?){
-         when(matchStatus){
-            MatchStatus.IN_PLAY ->{
+    private fun getMatchStatus(matchStatus: MatchStatus?) {
+        when (matchStatus) {
+            MatchStatus.IN_PLAY -> {
                 binding.apply {
                     txtMatchDetailStatus.text = "LV"
-                    imgLiveIndicator.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.green))
+                    imgLiveIndicator.setBackgroundColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.green
+                        )
+                    )
                 }
 
             }
-            MatchStatus.PAUSED ->{
+            MatchStatus.PAUSED -> {
                 binding.apply {
                     txtMatchDetailStatus.text = "PS"
-                    imgLiveIndicator.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.yellow))
+                    imgLiveIndicator.setBackgroundColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.yellow
+                        )
+                    )
                 }
             }
             MatchStatus.FINISHED -> {
                 binding.apply {
                     txtMatchDetailStatus.text = "FT"
-                    imgLiveIndicator.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.brown))
+                    imgLiveIndicator.setBackgroundColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.brown
+                        )
+                    )
                 }
             }
             MatchStatus.TIMED -> {
                 binding.apply {
                     txtMatchDetailStatus.text = "NS"
-                    imgLiveIndicator.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.black))
+                    imgLiveIndicator.setBackgroundColor(
+                        ContextCompat.getColor(
+                            requireContext(),
+                            R.color.black
+                        )
+                    )
                 }
             }
-             else -> {}
-         }
+            else -> {}
+        }
     }
 
 }

@@ -9,6 +9,7 @@
         <entry key="app/src/main/res/drawable/image_loader.xml" value="0.1995" />
         <entry key="app/src/main/res/drawable/loading_status_animation.xml" value="0.1995" />
         <entry key="app/src/main/res/drawable/text_background.xml" value="0.2005" />
+        <entry key="app/src/main/res/layout-land/fragment_match_day_fixture.xml" value="0.31927083333333334" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3729166666666667" />
         <entry key="app/src/main/res/layout/fragment_competition_fixtures.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/layout/fragment_competitions.xml" value="0.19270833333333334" />
@@ -16,7 +17,7 @@
         <entry key="app/src/main/res/layout/fragment_fixtures.xml" value="0.3729166666666667" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3729166666666667" />
         <entry key="app/src/main/res/layout/fragment_match_day_fixture.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/fragment_match_detail.xml" value="0.45" />
+        <entry key="app/src/main/res/layout/fragment_match_detail.xml" value="0.43621399176954734" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.3729166666666667" />
         <entry key="app/src/main/res/layout/item_competition.xml" value="0.3729166666666667" />
         <entry key="app/src/main/res/layout/item_fixture.xml" value="0.375" />

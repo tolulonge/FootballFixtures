@@ -18,7 +18,7 @@ object DomainModule {
         repository: FootballFixturesRepository,
     ): FootballFixturesUseCases {
         return FootballFixturesUseCases(
-           getFootballFixtures = GetTodayFixtures(repository),
+            getFootballFixtures = GetTodayFixtures(repository),
             getCompetitionsList = GetCompetitionsList(repository),
             getCompetitionFixturesList = GetCompetitionsFixturesList(repository)
         )

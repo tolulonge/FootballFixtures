@@ -44,7 +44,7 @@
             android:src="@drawable/ic_no_data"
             android:visibility="gone"
             android:layout_gravity="center"
-            />
+            android:contentDescription="@string/no_data_image" />
 
         <TextView
             android:id="@+id/no_data_textView"
@@ -63,10 +63,6 @@
 
 
     </LinearLayout>
-
-
-
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

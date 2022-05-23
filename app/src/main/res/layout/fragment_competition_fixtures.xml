@@ -18,7 +18,7 @@ tools:context=".presentation.ui.competition.competitionfixtures.CompetitionFixtu
         android:gravity="center"
         android:minHeight="?actionBarSize"
         android:padding="16dp"
-        android:text="Competition Fixtures"
+        android:text="@string/competition_fixtures"
         android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title" />
 
     <com.google.android.material.tabs.TabLayout

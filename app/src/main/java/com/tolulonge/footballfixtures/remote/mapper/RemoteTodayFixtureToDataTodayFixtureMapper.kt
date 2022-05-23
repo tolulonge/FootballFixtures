@@ -2,12 +2,11 @@ package com.tolulonge.footballfixtures.remote.mapper
 
 import com.tolulonge.footballfixtures.core.mapper.ListMapper
 import com.tolulonge.footballfixtures.data.model.DataTodayFixture
-import com.tolulonge.footballfixtures.local.model.LocalTodayFixture
 import com.tolulonge.footballfixtures.presentation.state.MatchStatus
 import com.tolulonge.footballfixtures.remote.model.todayfixture.Match
 
-class RemoteTodayFixtureToDataTodayFixtureMapper: ListMapper<Match,DataTodayFixture> {
-    override fun map(input: List<Match>): List<DataTodayFixture> = with(input){
+class RemoteTodayFixtureToDataTodayFixtureMapper : ListMapper<Match, DataTodayFixture> {
+    override fun map(input: List<Match>): List<DataTodayFixture> = with(input) {
         map {
             DataTodayFixture(
                 id = it.id,

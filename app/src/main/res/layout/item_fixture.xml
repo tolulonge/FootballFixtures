@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:text="FT"
+            android:text="@string/ft"
             app:layout_constraintBottom_toBottomOf="@+id/img_away_team_logo"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
             app:layout_constraintTop_toTopOf="@+id/img_home_team_logo" />
@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="As Roma"
+            android:text="@string/as_roma_home"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/img_home_team_logo"
             app:layout_constraintTop_toTopOf="@+id/img_home_team_logo" />
@@ -50,7 +50,7 @@
             android:id="@+id/txt_away_team"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Levante FC"
+            android:text="@string/levante_fc"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/img_away_team_logo"
             app:layout_constraintStart_toStartOf="@+id/txt_home_team" />
@@ -58,6 +58,7 @@
         <ImageView
             android:id="@+id/img_home_team_logo"
             android:layout_width="20dp"
+            android:contentDescription="@string/home_team_flag"
             android:layout_height="20dp"
             android:layout_marginTop="16dp"
             android:layout_marginStart="4dp"
@@ -68,6 +69,7 @@
         <ImageView
             android:id="@+id/img_away_team_logo"
             android:layout_width="20dp"
+            android:contentDescription="@string/away_team_flag"
             android:layout_height="20dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
@@ -81,7 +83,7 @@
             android:id="@+id/txt_home_team_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="3"
+            android:text="@string/_3"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/img_home_team_logo"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
@@ -91,7 +93,7 @@
             android:id="@+id/txt_away_team_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
+            android:text="@string/zero"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/img_away_team_logo"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
@@ -101,6 +103,7 @@
             android:id="@+id/img_navigate_to_match_details"
             android:layout_width="36dp"
             android:layout_height="36dp"
+            android:contentDescription="@string/navigate_next"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"

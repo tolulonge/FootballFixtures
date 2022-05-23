@@ -1,7 +1,5 @@
 package com.tolulonge.footballfixtures.data.model
 
-import androidx.room.ColumnInfo
-import androidx.room.PrimaryKey
 import com.tolulonge.footballfixtures.presentation.state.MatchStatus
 
 data class DataCompetitionFixture(

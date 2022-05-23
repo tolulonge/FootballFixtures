@@ -14,7 +14,11 @@ interface FootballFixturesRepository {
 
     fun getCompetitionsList(fetchFromRemote: Boolean): Flow<Resource<List<DomainCompetitionX>>>
 
-    fun getCompetitionFixtures(fetchFromRemote: Boolean,competitionCode: String, matchDay: Int): Flow<Resource<List<DomainCompetitionFixture>>>
+    fun getCompetitionFixtures(
+        fetchFromRemote: Boolean,
+        competitionCode: String,
+        matchDay: Int
+    ): Flow<Resource<List<DomainCompetitionFixture>>>
 
 
     suspend fun <E, T> FlowCollector<Resource<List<E>>>.isFetchingResultFromDb(
@@ -24,6 +28,7 @@ interface FootballFixturesRepository {
     ): Boolean
 
     suspend fun <E, T> FlowCollector<Resource<List<E>>>.retrieveContentFromRemote(response: Resource<List<T>>): List<T>?
+
     suspend fun <E, T> FlowCollector<Resource<List<E>>>.updateLocalFromRemoteAndEmitResult(
         remoteResult: List<T>?,
         insertToDb: suspend (List<T>) -> Unit,

@@ -2,7 +2,6 @@ package com.tolulonge.footballfixtures.data.repository
 
 import com.tolulonge.footballfixtures.core.util.ApiStatus
 import com.tolulonge.footballfixtures.core.util.Resource
-import com.tolulonge.footballfixtures.data.model.DataCompetitionX
 import com.tolulonge.footballfixtures.domain.mapper.AllDomainMappers
 import com.tolulonge.footballfixtures.domain.model.DomainCompetitionFixture
 import com.tolulonge.footballfixtures.domain.model.DomainCompetitionX
@@ -25,6 +24,8 @@ class FootballFixturesRepositoryImpl(
         return flow {
             emit(Resource.Loading(true))
             val localTodayFixture = localDataSource.getTodayFixturesDb()
+
+            // Determines whether to fetch the result from database or proceed to make the remote call
             if (isFetchingResultFromDb(
                     fetchFromRemote,
                     localTodayFixture
@@ -54,6 +55,8 @@ class FootballFixturesRepositoryImpl(
             emit(Resource.Loading(true))
             val localCompetitionX = localDataSource.getCompetitionsList()
 
+            // Determines whether to fetch the result from database or proceed to make the remote call
+
             if (isFetchingResultFromDb(fetchFromRemote, localCompetitionX) {
                     allDomainMappers.dataCompetitionXToDomainCompetitionXMapper.map(
                         localCompetitionX
@@ -63,6 +66,7 @@ class FootballFixturesRepositoryImpl(
             emit(Resource.Loading(true))
             val response = remoteDataSource.getCompetitionsList()
             val dataCompetitionList = retrieveContentFromRemote(response)
+
 
 
             updateLocalFromRemoteAndEmitResult(
@@ -84,8 +88,10 @@ class FootballFixturesRepositoryImpl(
     ): Flow<Resource<List<DomainCompetitionFixture>>> {
         return flow {
             emit(Resource.Loading(true))
-            val localCompetitionFixtures = localDataSource.getCompetitionFixtures(matchDay,competitionCode)
+            val localCompetitionFixtures =
+                localDataSource.getCompetitionFixtures(matchDay, competitionCode)
 
+            // Determines whether to fetch the result from database or proceed to make the remote call
             if (isFetchingResultFromDb(
                     fetchFromRemote,
                     localCompetitionFixtures
@@ -104,7 +110,7 @@ class FootballFixturesRepositoryImpl(
                 { localDataSource.insertCompetitionFixtures(it) },
                 {
                     allDomainMappers.dataCompetitionFixtureToDomainCompetitionFixtureMapper.map(
-                        localDataSource.getCompetitionFixtures(matchDay,competitionCode)
+                        localDataSource.getCompetitionFixtures(matchDay, competitionCode)
                     )
                 }
             )

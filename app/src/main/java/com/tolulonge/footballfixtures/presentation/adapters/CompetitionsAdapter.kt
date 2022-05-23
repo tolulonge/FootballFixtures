@@ -10,11 +10,15 @@ import com.tolulonge.footballfixtures.core.util.loadSvgOrOther
 import com.tolulonge.footballfixtures.databinding.ItemCompetitionBinding
 import com.tolulonge.footballfixtures.presentation.state.PresentationCompetitionX
 
+/**
+ * Adapter class to help bind views that display competitions list
+ */
 class CompetitionsAdapter : RecyclerView.Adapter<CompetitionsAdapter.CompetitionsViewHolder>() {
 
-    inner class CompetitionsViewHolder(private val binding: ItemCompetitionBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class CompetitionsViewHolder(private val binding: ItemCompetitionBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(competitionX: PresentationCompetitionX) {
-            with(competitionX){
+            with(competitionX) {
                 competitionEmblem?.let { binding.imgCompetitionLogo.loadSvgOrOther(it) }
                 binding.txtCompetitionName.text = competitionName ?: ""
 
@@ -28,17 +32,22 @@ class CompetitionsAdapter : RecyclerView.Adapter<CompetitionsAdapter.Competition
     }
 
     private val differCallback = object : DiffUtil.ItemCallback<PresentationCompetitionX>() {
-        override fun areItemsTheSame(oldItem: PresentationCompetitionX, newItem: PresentationCompetitionX): Boolean {
+        override fun areItemsTheSame(
+            oldItem: PresentationCompetitionX,
+            newItem: PresentationCompetitionX
+        ): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: PresentationCompetitionX, newItem: PresentationCompetitionX): Boolean {
+        override fun areContentsTheSame(
+            oldItem: PresentationCompetitionX,
+            newItem: PresentationCompetitionX
+        ): Boolean {
             return oldItem == newItem
         }
     }
 
     val differ = AsyncListDiffer(this, differCallback)
-
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CompetitionsViewHolder {
@@ -52,7 +61,8 @@ class CompetitionsAdapter : RecyclerView.Adapter<CompetitionsAdapter.Competition
     }
 
     override fun onBindViewHolder(holder: CompetitionsViewHolder, position: Int) {
-        val animation = AnimationUtils.loadAnimation(holder.itemView.context, android.R.anim.slide_in_left)
+        val animation =
+            AnimationUtils.loadAnimation(holder.itemView.context, android.R.anim.slide_in_left)
         val fixture = differ.currentList[position]
         holder.apply {
             itemView.startAnimation(animation)

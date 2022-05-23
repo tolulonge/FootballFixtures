@@ -1,6 +1,5 @@
 package com.tolulonge.footballfixtures.core.util
 
-import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.ResponseBody
@@ -12,13 +11,14 @@ import java.net.SocketTimeoutException
 abstract class BaseRemoteRepository {
 
     companion object {
-        private const val TAG = "BaseRemoteRepository"
         private const val MESSAGE_KEY = "message"
         private const val ERROR_KEY = "error"
         private const val ERRORS_KEY = "errors"
     }
 
-
+    /**
+     * Abstracts try and catch for all remote calls to handle network exceptions
+     */
     suspend inline fun <T> safeApiCall(crossinline callFunction: suspend () -> T): Resource<T> {
         return try {
             val myObject = withContext(Dispatchers.IO) { callFunction.invoke() }
@@ -26,7 +26,6 @@ abstract class BaseRemoteRepository {
         } catch (e: Exception) {
             withContext(Dispatchers.Main) {
                 e.printStackTrace()
-                Log.e("BaseRemoteRepo", "Call error: ${e.localizedMessage}", e.cause)
                 when (e) {
                     is HttpException -> {
 
@@ -35,7 +34,9 @@ abstract class BaseRemoteRepository {
                     }
                     is SocketTimeoutException -> Resource.Error("An error has occurred, try again later.")
                     is IOException -> Resource.Error("Check your internet connection and try again.")
-                    else -> Resource.Error(e.localizedMessage?: "An error has occurred, try again later.")
+                    else -> Resource.Error(
+                        e.localizedMessage ?: "An error has occurred, try again later."
+                    )
                 }
             }
         }
@@ -43,7 +44,6 @@ abstract class BaseRemoteRepository {
 
     fun getErrorMessage(responseBody: ResponseBody?): String {
         val errorValue = responseBody!!.string()
-        Log.d(TAG, "getErrorMessage: $errorValue")
         return if (errorValue.contains("Unauthorized"))
             errorValue
         else {

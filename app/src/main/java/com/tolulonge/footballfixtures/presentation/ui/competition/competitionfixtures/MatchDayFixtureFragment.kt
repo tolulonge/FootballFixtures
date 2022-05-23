@@ -1,9 +1,7 @@
 package com.tolulonge.footballfixtures.presentation.ui.competition.competitionfixtures
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -14,7 +12,6 @@ import com.tolulonge.footballfixtures.databinding.FragmentMatchDayFixtureBinding
 import com.tolulonge.footballfixtures.presentation.adapters.FixturesAdapter
 import com.tolulonge.footballfixtures.presentation.event.FootballFixturesEvent
 import com.tolulonge.footballfixtures.presentation.state.*
-import com.tolulonge.footballfixtures.presentation.ui.competition.CompetitionsFragmentDirections
 import com.tolulonge.footballfixtures.presentation.viewmodels.CompetitionFixturesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -38,7 +35,7 @@ class MatchDayFixtureFragment : Fragment() {
             val matchDay = presentationCompetitionX?.currentMatchDay ?: 1
             competitionFixturesViewModel.setMatchDay(matchDay)
             matchDay.toString()
-        }else{
+        } else {
             val matchDay = presentationCompetitionX?.nextMatchDay ?: 1
             competitionFixturesViewModel.setMatchDay(matchDay)
             matchDay.toString()
@@ -61,14 +58,19 @@ class MatchDayFixtureFragment : Fragment() {
         setupViews(presentationCompetitionX)
         subscribeToObservables()
 
-        competitionFixturesViewModel.onEvent(FootballFixturesEvent.GetCompetitionFixtures(
-            presentationCompetitionX?.competitionCode ?: ""
-        ))
+        competitionFixturesViewModel.onEvent(
+            FootballFixturesEvent.GetCompetitionFixtures(
+                presentationCompetitionX?.competitionCode ?: ""
+            )
+        )
 
         fixturesAdapter.setOnItemClickListener {
-            val action = CompetitionFixturesFragmentDirections.actionCompetitionFixturesFragmentToMatchDetailFragment(it)
+            val action =
+                CompetitionFixturesFragmentDirections.actionCompetitionFixturesFragmentToMatchDetailFragment(
+                    it
+                )
             findNavController().navigate(
-               action
+                action
             )
         }
     }
@@ -76,7 +78,7 @@ class MatchDayFixtureFragment : Fragment() {
     companion object {
         /**
          * The fragment argument representing the section number for this
-         * fragment.
+         * fragment and the presentation competition object
          */
         private const val ARG_SECTION_NUMBER = "section_number"
         private const val PRESENTATION_COMPETITION_X = "presentation_competition_x"
@@ -87,41 +89,46 @@ class MatchDayFixtureFragment : Fragment() {
          * number.
          */
         @JvmStatic
-        fun newInstance(sectionNumber: Int,presentationCompetition: PresentationCompetitionX): MatchDayFixtureFragment {
+        fun newInstance(
+            sectionNumber: Int,
+            presentationCompetition: PresentationCompetitionX
+        ): MatchDayFixtureFragment {
             return MatchDayFixtureFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_SECTION_NUMBER, sectionNumber)
-                    putParcelable(PRESENTATION_COMPETITION_X,presentationCompetition)
+                    putParcelable(PRESENTATION_COMPETITION_X, presentationCompetition)
                 }
             }
         }
     }
 
-    private fun subscribeToObservables(){
+    private fun subscribeToObservables() {
 
         lifecycleScope.launchWhenStarted {
 
             competitionFixturesViewModel.fixtures.collectLatest { state ->
-                when(state){
+                when (state) {
                     CompetitionFixturesFragmentUiState.Empty -> {
                         handleEmptyScenario()
                     }
                     is CompetitionFixturesFragmentUiState.Error -> {
                         if (state.message.isNotEmpty())
                             binding.root.showSnackBarWithAction(state.message, "Retry") {
-                                reloadCompetitionFixtures(presentationCompetitionX?.competitionCode ?: "")
+                                reloadCompetitionFixtures(
+                                    presentationCompetitionX?.competitionCode ?: ""
+                                )
                             }
                     }
                     is CompetitionFixturesFragmentUiState.Loaded -> {
                         if (state.message.isNotEmpty())
                             binding.root.showSnackBar(state.message)
-                            fixturesAdapter.differ.submitList(state.data.map { it.toPresentationTodayFixture() })
+                        fixturesAdapter.differ.submitList(state.data.map { it.toPresentationTodayFixture() })
 
                     }
                     is CompetitionFixturesFragmentUiState.Loading -> {
-                        if (state.isLoading){
+                        if (state.isLoading) {
                             binding.matchDayFixtures.progressBar.show()
-                        }else{
+                        } else {
                             binding.matchDayFixtures.progressBar.hide()
                         }
                     }
@@ -157,20 +164,23 @@ class MatchDayFixtureFragment : Fragment() {
         _binding = null
     }
 
-    private fun setUpRecyclerView(){
+    private fun setUpRecyclerView() {
         fixturesAdapter = FixturesAdapter()
         binding.matchDayFixtures.recyclerView.adapter = fixturesAdapter
     }
 
-    private fun reloadCompetitionFixtures(competitionCode: String){
-        competitionFixturesViewModel.onEvent(FootballFixturesEvent.RefreshCompetitionFixtures(
-            competitionCode
-        ))
+    private fun reloadCompetitionFixtures(competitionCode: String) {
+        competitionFixturesViewModel.onEvent(
+            FootballFixturesEvent.RefreshCompetitionFixtures(
+                competitionCode
+            )
+        )
     }
 
-    private fun setupViews(presentationCompetitionX: PresentationCompetitionX?){
+    private fun setupViews(presentationCompetitionX: PresentationCompetitionX?) {
         binding.apply {
-            txtCompetitionCountryName.text = presentationCompetitionX?.competitionCountryName ?: "Not Found"
+            txtCompetitionCountryName.text =
+                presentationCompetitionX?.competitionCountryName ?: "Not Found"
             txtCompetitionName.text = presentationCompetitionX?.competitionName ?: "Not Found"
             imgCompetitionEmblem.loadSvgOrOther(presentationCompetitionX?.competitionEmblem)
             imgCompetitionCountry.loadSvgOrOther(presentationCompetitionX?.competitionCountryEmblem)
@@ -178,12 +188,15 @@ class MatchDayFixtureFragment : Fragment() {
         }
     }
 
-    private fun handleEmptyScenario(){
-        fixturesAdapter.differ.submitList(listOf(PresentationTodayFixture(
-            null,"",MatchStatus.UNAVAILABLE,"No Data Available","",
-            null,null,"",""
-            ,"","",null,null,null
-        )))
+    private fun handleEmptyScenario() {
+        fixturesAdapter.differ.submitList(
+            listOf(
+                PresentationTodayFixture(
+                    null, "", MatchStatus.UNAVAILABLE, "No Data Available", "",
+                    null, null, "", "", "", "", null, null, null
+                )
+            )
+        )
     }
 }
 

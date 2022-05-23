@@ -2,9 +2,7 @@ package com.tolulonge.footballfixtures.local.mapper
 
 import com.tolulonge.footballfixtures.core.mapper.ToAndFroListMapper
 import com.tolulonge.footballfixtures.data.model.DataCompetitionX
-import com.tolulonge.footballfixtures.data.model.DataTodayFixture
 import com.tolulonge.footballfixtures.local.model.LocalCompetitionX
-import com.tolulonge.footballfixtures.local.model.LocalTodayFixture
 
 class LocalDataCompetitionXListMapper: ToAndFroListMapper<LocalCompetitionX, DataCompetitionX> {
 

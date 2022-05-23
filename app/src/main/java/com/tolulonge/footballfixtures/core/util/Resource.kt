@@ -13,7 +13,7 @@ sealed class Resource<T>(val status: ApiStatus, val data: T? = null, val message
         data = data,
         message = message
     )
-    class Error<T>(message: String, data: T? = null): Resource<T>(
+    class Error<T>(message: String): Resource<T>(
         status = ApiStatus.ERROR,
         message = message
     )

@@ -2,12 +2,11 @@ package com.tolulonge.footballfixtures.local.mapper
 
 import com.tolulonge.footballfixtures.core.mapper.ToAndFroListMapper
 import com.tolulonge.footballfixtures.data.model.DataCompetitionFixture
-import com.tolulonge.footballfixtures.data.model.DataTodayFixture
 import com.tolulonge.footballfixtures.local.model.LocalCompetitionFixture
-import com.tolulonge.footballfixtures.local.model.LocalTodayFixture
 import com.tolulonge.footballfixtures.presentation.state.MatchStatus
 
-class LocalDataCompetitionFixtureListMapper: ToAndFroListMapper<LocalCompetitionFixture, DataCompetitionFixture> {
+class LocalDataCompetitionFixtureListMapper :
+    ToAndFroListMapper<LocalCompetitionFixture, DataCompetitionFixture> {
 
     override fun from(e: List<DataCompetitionFixture>): List<LocalCompetitionFixture> {
         return e.map { toLocal(it) }
@@ -23,7 +22,7 @@ class LocalDataCompetitionFixtureListMapper: ToAndFroListMapper<LocalCompetition
             date = from.date,
             status = from.status?.let { it1 -> MatchStatus.valueOf(it1) },
             homeTeamName = from.homeTeamName,
-            awayTeamName =  from.awayTeamName,
+            awayTeamName = from.awayTeamName,
             homeTeamScore = from.homeTeamScore,
             awayTeamScore = from.awayTeamScore,
             awayTeamLogo = from.awayTeamLogo,
@@ -44,7 +43,7 @@ class LocalDataCompetitionFixtureListMapper: ToAndFroListMapper<LocalCompetition
             date = from.date,
             status = from.status?.name,
             homeTeamName = from.homeTeamName,
-            awayTeamName =  from.awayTeamName,
+            awayTeamName = from.awayTeamName,
             homeTeamScore = from.homeTeamScore,
             awayTeamScore = from.awayTeamScore,
             awayTeamLogo = from.awayTeamLogo,
@@ -58,8 +57,6 @@ class LocalDataCompetitionFixtureListMapper: ToAndFroListMapper<LocalCompetition
             countryFlag = from.countryFlag
         )
     }
-
-
 
 
 }
