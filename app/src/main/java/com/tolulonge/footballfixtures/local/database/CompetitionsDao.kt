@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface CompetitionsDao {
 
-    @Query("SELECT * FROM competitions")
+    @Query("SELECT * FROM competitions ")
     suspend fun getCompetitionsList(): List<LocalCompetitionX>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

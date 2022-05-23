@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface TodayFixturesDao {
 
-    @Query("SELECT * FROM fixtures")
+    @Query("SELECT * FROM fixtures ORDER BY date DESC")
     suspend fun getTodayFixtures(): List<LocalTodayFixture>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
