@@ -96,19 +96,19 @@
                 android:id="@+id/img_match_detail_home_team"
                 android:layout_width="54dp"
                 android:layout_height="54dp"
-                android:layout_marginEnd="24dp"
                 android:layout_marginTop="16dp"
-                android:src="@drawable/ic_home_team"
-                app:layout_constraintEnd_toStartOf="@+id/txt_match_detail_home_score"
+                android:src="@drawable/icons_default_flag_60"
+                app:layout_constraintEnd_toEndOf="@+id/txt_match_detail_home_team"
+                app:layout_constraintStart_toStartOf="@+id/txt_match_detail_home_team"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/img_match_detail_away_team"
                 android:layout_width="54dp"
                 android:layout_height="54dp"
-                android:layout_marginStart="24dp"
-                android:src="@drawable/ic_away_team"
-                app:layout_constraintStart_toEndOf="@+id/txt_match_detail_away_score"
+                android:src="@drawable/icons_default_flag_60"
+                app:layout_constraintEnd_toEndOf="@+id/txt_match_detail_away_team"
+                app:layout_constraintStart_toStartOf="@+id/txt_match_detail_away_team"
                 app:layout_constraintTop_toTopOf="@+id/img_match_detail_home_team" />
 
             <TextView

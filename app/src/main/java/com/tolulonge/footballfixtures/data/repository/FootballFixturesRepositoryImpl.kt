@@ -111,13 +111,13 @@ class FootballFixturesRepositoryImpl(
         }
     }
 
-    private suspend fun <E, T> FlowCollector<Resource<List<E>>>.isFetchingResultFromDb(
+    override suspend fun <E, T> FlowCollector<Resource<List<E>>>.isFetchingResultFromDb(
         fetchFromRemote: Boolean,
         localData: List<T>,
         retrieveFromDb: suspend () -> List<E>
     ): Boolean {
 
-        val isDbEmpty = localData.isEmpty()
+        val isDbEmpty = checkIfDatabaseIsEmpty(localData)
         val shouldJustLoadFromCache = !isDbEmpty && !fetchFromRemote
         if (shouldJustLoadFromCache) {
             emit(Resource.Loading(false))
@@ -133,7 +133,7 @@ class FootballFixturesRepositoryImpl(
     }
 
 
-    private suspend fun <E, T> FlowCollector<Resource<List<E>>>.retrieveContentFromRemote(
+    override suspend fun <E, T> FlowCollector<Resource<List<E>>>.retrieveContentFromRemote(
         response: Resource<List<T>>
     ): List<T>? {
         val result = when (response.status) {
@@ -153,7 +153,7 @@ class FootballFixturesRepositoryImpl(
         return result
     }
 
-    private suspend fun <E, T> FlowCollector<Resource<List<E>>>.updateLocalFromRemoteAndEmitResult(
+    override suspend fun <E, T> FlowCollector<Resource<List<E>>>.updateLocalFromRemoteAndEmitResult(
         remoteResult: List<T>?,
         insertToDb: suspend ((List<T>) -> Unit),
         retrieveFromDb: suspend () -> List<E>
@@ -168,6 +168,12 @@ class FootballFixturesRepositoryImpl(
                 )
             )
         }
+    }
+
+    override fun <T> checkIfDatabaseIsEmpty(
+        localData: List<T>
+    ): Boolean {
+        return localData.isEmpty()
     }
 
 

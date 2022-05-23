@@ -79,6 +79,3 @@ myUrl?.let {
 }
 }
 
-fun ImageView.loadDefaultFlag(){
-    this.setImageResource(R.drawable.icons_default_flag_60)
-}

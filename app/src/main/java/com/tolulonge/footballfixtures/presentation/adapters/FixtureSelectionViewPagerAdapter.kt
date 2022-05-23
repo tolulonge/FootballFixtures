@@ -9,7 +9,7 @@ import com.tolulonge.footballfixtures.presentation.ui.competition.competitionfix
 
 
 
-class FixtureSelectionViewPagerAdapter(fm: Fragment, val presentationCompetitionX: PresentationCompetitionX) :  FragmentStateAdapter(fm){
+class FixtureSelectionViewPagerAdapter(fm: Fragment, private val presentationCompetitionX: PresentationCompetitionX) :  FragmentStateAdapter(fm){
 
     override fun createFragment(position: Int): Fragment {
 
